@@ -1,0 +1,1 @@
+zip -g ./simple_fastapi.zip -r app
