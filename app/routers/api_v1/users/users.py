@@ -64,8 +64,13 @@ def build_response(status_code, body):
         'headers': {
             'Content-type':'application/json'
         },
-        'body':json.dumps(body, cls=DecimalEncoder)
+        'body':use_encoder(body)
     }
+
+def use_encoder(body):
+    response = json.dumps(body, cls=DecimalEncoder)
+    data = json.loads(response)
+    return data
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
