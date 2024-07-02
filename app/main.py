@@ -12,6 +12,11 @@ handler = Mangum(app)
 
 app.include_router(api_router, prefix=settings.prefix)
 
+@app.get("/")
+def welcome():
+    return { 'message': 'welcome to app'}
+
+
 @app.exception_handler(404)
 def not_found_exception_handler(request: Request, exc: HTTPException):
     return not_found_error(request, exc)

@@ -13,7 +13,7 @@ dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 dynamo_table = dynamodb.Table('fast_api-sample')
 userSerivce = userSerivce()
 
-@router.get("/")
+@router.get("")
 async def get_users():
     try:
         scan_params = {
@@ -33,7 +33,7 @@ async def get_user_by_id(userId: str):
         return build_response(200, response)
     raise HTTPException(status_code=404, detail=f"user not found, {userId}")
 
-@router.post("/")
+@router.post("")
 async def add_user(user: UserModel):
 
 
